@@ -12,6 +12,11 @@ public class Main {
         System.out.println("Questão 2: ");
         Question2.doQuestion2();
         System.out.println();
+
+        // Question 3
+        System.out.println("Questão 3: ");
+        Question3.doQuestion3();
+        System.out.println();
     }
 
 }
