@@ -8,7 +8,7 @@ import java.io.Reader;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public class Question3 {
+public class Question3 implements Question {
     /*
     Dado um vetor que guarda o valor de faturamento diário de uma distribuidora, faça um programa que calcule e retorne:
     • O menor valor de faturamento ocorrido em um dia do mês;
@@ -21,9 +21,8 @@ public class Question3 {
     Estes dias devem ser ignorados no cálculo da média;
      */
 
-    private static final String FILE_PATH = "src/main/resources/dados.json";
-
-    public static void doQuestion3() {
+    public void solve() {
+        String FILE_PATH = "src/main/resources/dados.json";
         Faturamento[] faturamentos = readJsonFile(FILE_PATH);
 
         if (faturamentos == null) {
@@ -36,7 +35,7 @@ public class Question3 {
                 getDiasComFaturamentoSuperiorAMedia(faturamentos));
     }
 
-    private static Faturamento[] readJsonFile(String path) {
+    private Faturamento[] readJsonFile(String path) {
         File file = new File(path);
         try (Reader reader = new FileReader(file)) {
             Gson gson = new Gson();
@@ -48,7 +47,7 @@ public class Question3 {
         return null;
     }
 
-    private static BigDecimal getMinFaturamento(Faturamento[] faturamentos) {
+    private BigDecimal getMinFaturamento(Faturamento[] faturamentos) {
         BigDecimal minFaturamento = null;
 
         for (Faturamento faturamento : faturamentos) {
@@ -64,7 +63,7 @@ public class Question3 {
         return minFaturamento;
     }
 
-    private static BigDecimal getMaxFaturamento(Faturamento[] faturamentos) {
+    private BigDecimal getMaxFaturamento(Faturamento[] faturamentos) {
         BigDecimal maxFaturamento = null;
 
         for (Faturamento faturamento : faturamentos) {
@@ -80,7 +79,7 @@ public class Question3 {
         return maxFaturamento;
     }
 
-    private static BigDecimal getFaturamentoMedio(Faturamento[] faturamentos) {
+    private BigDecimal getFaturamentoMedio(Faturamento[] faturamentos) {
         BigDecimal totalFaturamento = BigDecimal.ZERO;
         int dias = 0;
 
@@ -94,7 +93,7 @@ public class Question3 {
         return totalFaturamento.divide(BigDecimal.valueOf(dias), 4, RoundingMode.HALF_UP);
     }
 
-    private static int getDiasComFaturamentoSuperiorAMedia(Faturamento[] faturamentos) {
+    private int getDiasComFaturamentoSuperiorAMedia(Faturamento[] faturamentos) {
         BigDecimal avg = getFaturamentoMedio(faturamentos);
         int dias = 0;
 
@@ -110,11 +109,9 @@ public class Question3 {
     }
 
     static class Faturamento {
-        private final int dia;
         private final BigDecimal valor;
 
-        public Faturamento(int dia, BigDecimal valor) {
-            this.dia = dia;
+        public Faturamento(BigDecimal valor) {
             this.valor = valor;
         }
 

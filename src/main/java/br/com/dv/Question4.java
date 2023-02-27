@@ -5,9 +5,9 @@ import java.math.RoundingMode;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Question4 {
+public class Question4 implements Question {
 
-    public static void doQuestion4() {
+    public void solve() {
         /*
         Dado o valor de faturamento mensal de uma distribuidora, detalhado por estado:
 
@@ -34,7 +34,7 @@ public class Question4 {
         printFaturamentosPorEstado(faturamentoPorEstado, totalFaturamento);
     }
 
-    private static BigDecimal getTotalFaturamento(Map<String, BigDecimal> faturamentoPorEstado) {
+    private BigDecimal getTotalFaturamento(Map<String, BigDecimal> faturamentoPorEstado) {
         BigDecimal totalFaturamento = BigDecimal.ZERO;
         for (BigDecimal faturamento : faturamentoPorEstado.values()) {
             totalFaturamento = totalFaturamento.add(faturamento);
@@ -42,7 +42,7 @@ public class Question4 {
         return totalFaturamento;
     }
 
-    private static void printFaturamentosPorEstado(Map<String, BigDecimal> faturamentoPorEstado,
+    private void printFaturamentosPorEstado(Map<String, BigDecimal> faturamentoPorEstado,
                                                    BigDecimal totalFaturamento) {
         for (Map.Entry<String, BigDecimal> entry : faturamentoPorEstado.entrySet()) {
             BigDecimal percentual = entry

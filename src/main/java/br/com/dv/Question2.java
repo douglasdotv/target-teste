@@ -4,17 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Question2 {
+public class Question2 implements Question {
     /*
     Escreva um programa que, informado um número, calcule a sequência de Fibonacci e
     retorne uma mensagem avisando se o número informado pertence ou não à sequência.
      */
 
-    private final static Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
 
-    public static void doQuestion2() {
+    public void solve() {
+        int number;
+
         System.out.println("Digite um número: ");
-        int number = scanner.nextInt();
+        try {
+            number = scanner.nextInt();
+        } catch (Exception e) {
+            System.out.println("Input inválido!");
+            return;
+        }
 
         List<Integer> fibonacciSequence = getFibonacciSequence(number);
 
@@ -28,7 +35,7 @@ public class Question2 {
         }
     }
 
-    private static List<Integer> getFibonacciSequence(int number) {
+    private List<Integer> getFibonacciSequence(int number) {
         int first = 0;
         int second = 1;
 

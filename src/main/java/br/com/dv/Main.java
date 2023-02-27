@@ -1,32 +1,34 @@
 package br.com.dv;
 
+import java.util.List;
+
 public class Main {
 
+    private List<Question> questions;
+
     public static void main(String[] args) {
-        // Question 1
-        System.out.println("Questão 1: ");
-        Question1.doQuestion1();
-        System.out.println();
+        Main main = new Main();
+        main.init();
+        main.solveQuestions();
+    }
 
-        // Question 2
-        System.out.println("Questão 2: ");
-        Question2.doQuestion2();
-        System.out.println();
+    private void init() {
+        questions = List.of(
+                new Question1(),
+                new Question2(),
+                new Question3(),
+                new Question4(),
+                new Question5()
+        );
+    }
 
-        // Question 3
-        System.out.println("Questão 3: ");
-        Question3.doQuestion3();
-        System.out.println();
-
-        // Question 4
-        System.out.println("Questão 4: ");
-        Question4.doQuestion4();
-        System.out.println();
-
-        // Question 5
-        System.out.println("Questão 5: ");
-        Question5.doQuestion5();
-        System.out.println();
+    private void solveQuestions() {
+        int questionNumber = 1;
+        for (Question question : questions) {
+            System.out.println("Questão " + questionNumber++);
+            question.solve();
+            System.out.println();
+        }
     }
 
 }

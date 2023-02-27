@@ -2,15 +2,15 @@ package br.com.dv;
 
 import java.util.Scanner;
 
-public class Question5 {
+public class Question5 implements Question {
 
     /*
     Escreva um programa que inverta os caracteres de um string.
      */
 
-    private final static Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
 
-    public static void doQuestion5() {
+    public void solve() {
         System.out.println("Insira uma string: ");
         String input = scanner.nextLine();
 
