@@ -17,6 +17,11 @@ public class Main {
         System.out.println("Questão 3: ");
         Question3.doQuestion3();
         System.out.println();
+
+        // Question 4
+        System.out.println("Questão 4: ");
+        Question4.doQuestion4();
+        System.out.println();
     }
 
 }
